@@ -2,11 +2,14 @@ package fr.eni.demo.bll.mock;
 
 import fr.eni.demo.bll.FormateurService;
 import fr.eni.demo.bo.Formateur;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Profile("dev")
 public class FormateurServiceBouchon implements FormateurService {
 
     private List<Formateur> formateurs = List.of(
