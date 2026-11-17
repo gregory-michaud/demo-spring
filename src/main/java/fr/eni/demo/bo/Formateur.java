@@ -1,11 +1,21 @@
 package fr.eni.demo.bo;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class Formateur {
 
+    @NotBlank
+    @Size(min = 4, max = 250)
     private String nom;
 
+    @NotBlank
+    @Size(min = 4, max = 250)
     private String prenom;
 
+    @NotBlank
+    @Email
     private String email;
 
     public Formateur(String nom, String prenom, String email) {

@@ -2,10 +2,13 @@ package fr.eni.demo.controller;
 
 import fr.eni.demo.bll.FormateurService;
 import fr.eni.demo.bo.Formateur;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,9 +41,22 @@ public class FormateurController {
     }
 
     @PostMapping
-    public void creerFormateur(Formateur formateur){
+    public ResponseEntity<?> creerFormateur(@Valid Formateur formateur, BindingResult bindingResult){
 
-        this.formateurService.addFormateur(formateur);
+        if(bindingResult.hasErrors()){
+            // traitement des erreurs
+            // construction d'une liste de message d'erreur avec le champ en erreur + le message associé à l'erreur
+            List<String> listeMessageErreur = bindingResult
+                    .getFieldErrors()
+                    .stream()
+                    .map(error -> error.getField() + " - " + error.getDefaultMessage()).toList();
+
+             return ResponseEntity.badRequest().body(listeMessageErreur);
+        }else{
+            this.formateurService.addFormateur(formateur);
+            return ResponseEntity.ok().body(formateur);
+        }
+
     }
 
 
