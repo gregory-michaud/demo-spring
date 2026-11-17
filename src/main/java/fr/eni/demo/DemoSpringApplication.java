@@ -10,7 +10,8 @@ import org.springframework.context.ApplicationContext;
 public class DemoSpringApplication {
 
     public static void main(String[] args) {
-        ApplicationContext applicationContext = SpringApplication.run(DemoSpringApplication.class, args);
+        SpringApplication.run(DemoSpringApplication.class, args);
+        /*ApplicationContext applicationContext = SpringApplication.run(DemoSpringApplication.class, args);
 
         WelcomeController welcomeController = (WelcomeController) applicationContext.getBean("welcomeControllerBean");
         welcomeController.welcome();
@@ -23,7 +24,7 @@ public class DemoSpringApplication {
 
 
         FormateurController formateurController = applicationContext.getBean(FormateurController.class);
-        formateurController.afficherFormateurs();
+        formateurController.afficherFormateurs();*/
 
 
     }

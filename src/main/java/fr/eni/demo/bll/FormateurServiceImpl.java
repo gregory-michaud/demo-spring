@@ -22,4 +22,14 @@ public class FormateurServiceImpl implements FormateurService {
     public List<Formateur> getFormateurs() {
         return this.formateurDAO.findAll();
     }
+
+    @Override
+    public Formateur getFormateur(String email) {
+        return this.formateurDAO.findByEmail(email).orElse(null);
+    }
+
+    @Override
+    public void addFormateur(Formateur formateur) {
+        this.formateurDAO.insert(formateur);
+    }
 }
