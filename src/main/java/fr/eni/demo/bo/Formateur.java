@@ -18,6 +18,10 @@ public class Formateur {
     @Email
     private String email;
 
+    public Formateur() {
+    }
+
+
     public Formateur(String nom, String prenom, String email) {
         this.nom = nom;
         this.prenom = prenom;

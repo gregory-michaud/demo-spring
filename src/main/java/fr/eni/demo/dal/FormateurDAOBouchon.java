@@ -1,6 +1,7 @@
 package fr.eni.demo.dal;
 
 import fr.eni.demo.bo.Formateur;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
+@Profile("dev")
 public class FormateurDAOBouchon implements FormateurDAO {
 
     private List<Formateur> formateurs;
